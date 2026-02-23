@@ -10,10 +10,11 @@ A web-based platform designed to help teachers and students manage lessons, assi
 
 • User registration and secure login (role-based access for teachers and students) • Lesson management (add, edit, delete, and view lessons) • Assignment management (create assignments, submit work, and provide feedback) • Discussion and communication system • User profile management • Centralized dashboard for learning activities
 
-TO LOGIN register -student -password: student123
+## TO LOGIN 
+-register -student -password: student123
 
-register -teacher -password:teacher123
+-register -teacher -password:teacher123
 
-Technology Stack
+## Technology Stack
 
 • Laravel Framework • PHP • MySQL Database • HTML, CSS, JavaScript
