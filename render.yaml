@@ -1,0 +1,59 @@
+services:
+  - type: web
+    name: classconnect
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: LOG_LEVEL
+        value: error
+      - key: LOG_STDERR
+        value: true
+      - key: APP_URL
+        sync: false
+      - key: APP_KEY
+        sync: false
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: classconnect-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: classconnect-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: classconnect-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: classconnect-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: classconnect-db
+          property: password
+      - key: SESSION_DRIVER
+        value: database
+      - key: CACHE_DRIVER
+        value: database
+      - key: QUEUE_CONNECTION
+        value: sync
+    healthCheckPath: /
+
+databases:
+  - name: classconnect-db
+    plan: free
+    region: oregon
+    databaseName: classconnect
+    user: classconnect_user
+
